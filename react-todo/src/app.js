@@ -14,7 +14,7 @@ const Template = () => {
       <div className="addtodo">
         <AddTodo />
       </div>
-      <div className="todlist">
+      <div className="todolist">
         <TodoList />
       </div>
       <div className="footer">
