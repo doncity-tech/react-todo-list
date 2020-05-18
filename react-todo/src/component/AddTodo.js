@@ -5,7 +5,7 @@ const AddTodo = () => {
   return (
     <form>
       <input type="text" placeholder="Add Task"></input>
-      <button>+Task</button>
+      <button className="add-task">+Task</button>
     </form>
   );
 }
