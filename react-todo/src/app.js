@@ -25,11 +25,7 @@ const Template = () => {
 }
 class App extends React.Component {
   render() {
-    return (
-      <div>
-        <Template />
-      </div>
-    );
+    return (<Template />);
   };
 }
 
