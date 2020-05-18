@@ -1,13 +1,25 @@
-import React from 'react';
-import './style.css';
+import React from 'react'
+import TodoList from './component/TodoList'
+import AddTodo from './component/AddTodo'
+import TodoFilter from './component/TodoFilter'
+import './style.css'
 
 // function Component
-const Template = ({ theValue }) => {
+const Template = () => {
   return (
-    <div>
-      <ul>
-        <li>{theValue}</li>
-      </ul>
+    <div className="container">
+      <div className="header">
+        <h1>React Todo List</h1>
+      </div>
+      <div className="addtodo">
+        <AddTodo />
+      </div>
+      <div className="todlist">
+        <TodoList />
+      </div>
+      <div className="footer">
+        <TodoFilter />
+      </div>
     </div>
   )
 }
@@ -15,11 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <input type="text" placeholder="Add Task"></input>
-          <button>+Task</button>
-        </div>
-        <Template theValue={'The first task'} />
+        <Template />
       </div>
     );
   };
