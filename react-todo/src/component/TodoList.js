@@ -26,7 +26,7 @@ class TodoList extends React.Component {
   }
   addTodoHandler = (addedTask) => {
     this.setState(prevState => ({
-      tasks: [...prevState.tasks, addedTask]
+      tasks: [...prevState.tasks, addedTask],
     }))
   }
 
