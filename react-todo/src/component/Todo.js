@@ -3,7 +3,13 @@ import React from 'react';
 const Todo = (props) => {
 	return (
 		<li id={props.id}>
-			<input type='checkbox' defaultChecked={props.completed} />
+			<input
+				type='checkbox'
+				defaultChecked={props.completed}
+				onChange={(e) => {
+					props.toggleTaskCompleted(props.id);
+				}}
+			/>
 			<span className='todo-text'>{props.task}</span>
 		</li>
 	);
