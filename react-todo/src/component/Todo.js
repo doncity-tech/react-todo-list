@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Todo = (props) => {
-	return (
-		<li id={props.id}>
+	const [isEditing, setEditing] = useState(false);
+
+	const editingTemplate = (
+		<div>
+			<form className='edit-form'>
+				<div>
+					<input type='text' />
+				</div>
+				<div>
+					<button>Save</button>
+					<button>Cancel</button>
+				</div>
+			</form>
+		</div>
+	);
+
+	const viewTemplate = (
+		<div>
 			<input
 				type='checkbox'
 				defaultChecked={props.completed}
@@ -18,8 +34,10 @@ const Todo = (props) => {
 				X
 			</button>
 			<span className='todo-text'>{props.task}</span>
-		</li>
+		</div>
 	);
+
+	return <li id={props.id}>{isEditing ? editingTemplate : viewTemplate}</li>;
 };
 
 export default Todo;

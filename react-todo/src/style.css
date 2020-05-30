@@ -23,7 +23,8 @@
 .addtodo button {
 	font-size: 14px;
 }
-.addtodo input {
+.addtodo input,
+.edit-form input {
 	height: 27px;
 	padding: 0 10px;
 	border: 1px solid rgba(128, 0, 128, 0.548);
@@ -33,6 +34,33 @@
 	background: purple;
 	color: white;
 	border: 0;
+}
+.edit-form input {
+	width: 100%;
+	margin-bottom: 5px;
+}
+.edit-form button {
+	margin: 0 3px;
+	padding: 3px 5px;
+	color: white;
+	border: 0;
+	background: purple;
+	cursor: pointer;
+	border-radius: 4px;
+	opacity: 0.8;
+}
+.edit-form button:last-child {
+	border: 1px solid purple;
+	background: white;
+	color: purple;
+}
+.edit-form button:hover {
+	opacity: 1;
+}
+.edit-form div {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 .todolist {
 	padding: 10px 5px;

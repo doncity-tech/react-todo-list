@@ -1,13 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-const TodoFilter = () => {
-  return (
-    <div>
-      <button>All</button>
-      <button>Completed</button>
-      <button>Incomplete</button>
-    </div>
-  );
-}
+const TodoFilter = (props) => {
+	const allTasks = () => {
+		props.allTasks();
+	};
+	const completedTasks = () => {
+		props.completedTasks();
+	};
+	const incompleteTasks = () => {
+		props.incompleteTasks();
+	};
+	return (
+		<div>
+			<button onClick={allTasks}>All</button>
+			<button onClick={completedTasks}>Completed</button>
+			<button onClick={incompleteTasks}>Incomplete</button>
+		</div>
+	);
+};
 
-export default TodoFilter
+export default TodoFilter;
