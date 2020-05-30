@@ -35,7 +35,7 @@ class App extends React.Component {
 			}
 			return task;
 		});
-		this.setState(editedTask);
+		this.setState({ tasks: editedTask });
 	};
 
 	deleteTask = (id) => {
