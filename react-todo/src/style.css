@@ -75,6 +75,7 @@
 }
 .todo-text {
 	margin-left: 10px;
+	cursor: pointer;
 }
 .delBtn {
 	margin-left: 2px;
