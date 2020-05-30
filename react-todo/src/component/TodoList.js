@@ -1,28 +1,6 @@
 import React from 'react';
 import Todo from './Todo';
-
-class AddTodo extends React.Component {
-	state = { task: '' };
-	handleSubmit = (e) => {
-		e.preventDefault();
-		this.props.onSubmit(this.state.task);
-		this.setState({ task: '' });
-	};
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<input
-					type='text'
-					placeholder='Add Task'
-					onChange={(e) => this.setState({ task: e.target.value })}
-					value={this.state.task}
-					required
-				/>
-				<button className='add-task'>+Task</button>
-			</form>
-		);
-	}
-}
+import Form from './Form';
 
 class TodoList extends React.Component {
 	state = {
@@ -41,7 +19,7 @@ class TodoList extends React.Component {
 		return (
 			<div>
 				<div className='addtodo'>
-					<AddTodo onSubmit={this.addTodoHandler} />
+					<Form onSubmit={this.addTodoHandler} />
 				</div>
 				<div className='todolist'>
 					<ul>

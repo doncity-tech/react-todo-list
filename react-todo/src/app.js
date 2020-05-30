@@ -3,8 +3,7 @@ import TodoList from './component/TodoList';
 import TodoFilter from './component/TodoFilter';
 import './style.css';
 
-// function Component
-class Layout extends React.Component {
+class App extends React.Component {
 	state = { input: '' };
 	render() {
 		return (
@@ -20,11 +19,6 @@ class Layout extends React.Component {
 				</div>
 			</div>
 		);
-	}
-}
-class App extends React.Component {
-	render() {
-		return <Layout />;
 	}
 }
 
