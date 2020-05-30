@@ -10,6 +10,13 @@ const Todo = (props) => {
 					props.toggleTaskCompleted(props.id);
 				}}
 			/>
+			<button
+				className='delBtn'
+				onClick={(e) => {
+					props.deleteTask(props.id);
+				}}>
+				X
+			</button>
 			<span className='todo-text'>{props.task}</span>
 		</li>
 	);

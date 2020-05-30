@@ -17,7 +17,18 @@ class TodoList extends React.Component {
 	};
 
 	toggleTaskCompleted = (id) => {
-		console.log(this.state.tasks[0]);
+		const updateTask = this.state.tasks.map((task) => {
+			if (id === task.id) {
+				return { ...task, completed: !task.completed };
+			}
+			return task;
+		});
+		this.setState({ tasks: updateTask });
+	};
+
+	deleteTask = (id) => {
+		const remainingTasks = this.state.tasks.filter((task) => id !== task.id);
+		this.setState({ tasks: remainingTasks });
 	};
 
 	render() {
@@ -35,6 +46,7 @@ class TodoList extends React.Component {
 								id={list.id}
 								key={list.id}
 								toggleTaskCompleted={this.toggleTaskCompleted}
+								deleteTask={this.deleteTask}
 							/>
 						))}
 					</ul>
