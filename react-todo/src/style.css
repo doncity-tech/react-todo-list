@@ -91,14 +91,22 @@
 .footer button {
 	margin: 0 5px;
 	padding: 5px 10px;
-	background: purple;
 	cursor: pointer;
-	color: white;
 	font-size: 14px;
-	border: 0;
+	border: 1px solid purple;
 	border-radius: 4px;
 	opacity: 0.8;
 }
+[aria-pressed='true'] {
+	background: purple;
+	color: white;
+}
+[aria-pressed='false'] {
+	background: none;
+	color: purple;
+}
 .footer button:hover {
+	background: purple;
+	color: white;
 	opacity: 1;
 }
