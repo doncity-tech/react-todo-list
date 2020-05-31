@@ -2,13 +2,38 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import Todo from './component/Todo';
 import Form from './component/Form';
-import TodoFilter from './component/TodoFilter';
+import FilterButton from './component/FilterButon';
 import './style.css';
+
+const FILTER_MAP = {
+	All: () => true,
+	Active: (task) => !task.completed,
+	Completed: (task) => task.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 class App extends React.Component {
 	state = {
 		tasks: [],
+		filter: 'All',
 	};
+
+	changeState = (name) => {
+		this.setState({ filter: name });
+	};
+
+	checkStatus = (name) => name === this.state.filter;
+
+	filterList = FILTER_NAMES.map((name) => (
+		<FilterButton
+			key={name}
+			name={name}
+			changeState={this.changeState}
+			isPressed={name === this.state.filter}
+		/>
+	));
+
 	addTodoHandler = (addedTask) => {
 		this.setState((prevState) => ({
 			tasks: [
@@ -43,20 +68,6 @@ class App extends React.Component {
 		this.setState({ tasks: remainingTasks });
 	};
 
-	allTasks = () => {
-		console.log('all');
-	};
-	completedTasks = () => {
-		// this.state.tasks.map((task) => {
-		// 	if (task.completed === true) {
-		// 		return;
-		// 	}
-		// });
-	};
-	incompleteTasks = () => {
-		console.log('incomplete');
-	};
-
 	render() {
 		return (
 			<div className='container'>
@@ -69,26 +80,24 @@ class App extends React.Component {
 					</div>
 					<div className='todolist'>
 						<ul>
-							{this.state.tasks.map((list) => (
-								<Todo
-									task={list.task}
-									completed={list.completed}
-									id={list.id}
-									key={list.id}
-									toggleTaskCompleted={this.toggleTaskCompleted}
-									editTask={this.editTask}
-									deleteTask={this.deleteTask}
-								/>
-							))}
+							{this.state.tasks
+								.filter(FILTER_MAP[this.state.filter])
+								.map((list) => (
+									<Todo
+										task={list.task}
+										completed={list.completed}
+										id={list.id}
+										key={list.id}
+										toggleTaskCompleted={this.toggleTaskCompleted}
+										editTask={this.editTask}
+										deleteTask={this.deleteTask}
+									/>
+								))}
 						</ul>
 					</div>
 				</div>
 				<div className='footer'>
-					<TodoFilter
-						allTasks={this.allTasks}
-						completedTasks={this.completedTasks}
-						incompleteTasks={this.incompleteTasks}
-					/>
+					<div>{this.filterList}</div>
 				</div>
 			</div>
 		);
