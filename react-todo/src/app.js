@@ -19,23 +19,9 @@ class App extends React.Component {
 		filter: 'All',
 	};
 
-	changeState = async (name) => {
-		await this.setState({ filter: name });
+	changeState = (name) => {
+		this.setState({ filter: name });
 	};
-
-	checkStatus = (name) => {
-		let status = name === this.state.filter;
-		return status;
-	};
-
-	filterList = FILTER_NAMES.map((name) => (
-		<FilterButton
-			key={name}
-			name={name}
-			changeState={this.changeState}
-			isPressed={this.checkStatus(name)}
-		/>
-	));
 
 	addTodoHandler = (addedTask) => {
 		this.setState((prevState) => ({
@@ -81,6 +67,19 @@ class App extends React.Component {
 					<div className='addtodo'>
 						<Form onSubmit={this.addTodoHandler} />
 					</div>
+					<div className='nav'>
+						<div>
+							{FILTER_NAMES.map((name) => (
+								<FilterButton
+									key={name}
+									name={name}
+									changeState={this.changeState}
+									isPressed={name === this.state.filter}
+									check={this.state.filter}
+								/>
+							))}
+						</div>
+					</div>
 					<div className='todolist'>
 						<ul>
 							{this.state.tasks
@@ -93,14 +92,10 @@ class App extends React.Component {
 										key={list.id}
 										toggleTaskCompleted={this.toggleTaskCompleted}
 										editTask={this.editTask}
-										deleteTask={this.deleteTask}
 									/>
 								))}
 						</ul>
 					</div>
-				</div>
-				<div className='footer'>
-					<div>{this.filterList}</div>
 				</div>
 			</div>
 		);

@@ -83,12 +83,12 @@
 	color: red;
 }
 
-.footer {
+.nav {
 	display: flex;
 	justify-content: center;
-	margin: 20px 0;
+	margin: 5px 0;
 }
-.footer button {
+.nav button {
 	margin: 0 5px;
 	padding: 5px 10px;
 	cursor: pointer;
@@ -105,7 +105,7 @@
 	background: none;
 	color: purple;
 }
-.footer button:hover {
+.nav button:hover {
 	background: purple;
 	color: white;
 	opacity: 1;

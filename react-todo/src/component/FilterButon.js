@@ -3,9 +3,8 @@ import React from 'react';
 const FilterButton = (props) => {
 	return (
 		<button
-			onClick={async () => {
-				await props.changeState(props.name);
-				console.log(props.isPressed);
+			onClick={() => {
+				props.changeState(props.name);
 			}}
 			aria-pressed={props.isPressed}>
 			{props.name}
