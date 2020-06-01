@@ -3,10 +3,11 @@ import React from 'react';
 const FilterButton = (props) => {
 	return (
 		<button
-			aria-pressed={props.isPressed}
-			onClick={() => {
-				props.changeState(props.name);
-			}}>
+			onClick={async () => {
+				await props.changeState(props.name);
+				console.log(props.isPressed);
+			}}
+			aria-pressed={props.isPressed}>
 			{props.name}
 		</button>
 	);

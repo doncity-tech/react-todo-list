@@ -19,18 +19,21 @@ class App extends React.Component {
 		filter: 'All',
 	};
 
-	changeState = (name) => {
-		this.setState({ filter: name });
+	changeState = async (name) => {
+		await this.setState({ filter: name });
 	};
 
-	checkStatus = (name) => name === this.state.filter;
+	checkStatus = (name) => {
+		let status = name === this.state.filter;
+		return status;
+	};
 
 	filterList = FILTER_NAMES.map((name) => (
 		<FilterButton
 			key={name}
 			name={name}
 			changeState={this.changeState}
-			isPressed={name === this.state.filter}
+			isPressed={this.checkStatus(name)}
 		/>
 	));
 
