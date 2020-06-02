@@ -92,6 +92,7 @@ class App extends React.Component {
 										key={list.id}
 										toggleTaskCompleted={this.toggleTaskCompleted}
 										editTask={this.editTask}
+										deleteTask={this.deleteTask}
 									/>
 								))}
 						</ul>

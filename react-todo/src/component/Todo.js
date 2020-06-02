@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Todo = (props) => {
 	const [isEditing, setEditing] = useState({ status: false, task: '' });
+	const editFieldRef = useRef(null);
+	const editButtonRef = useRef(null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -19,6 +21,7 @@ const Todo = (props) => {
 						onChange={(e) => {
 							setEditing({ status: true, task: e.target.value });
 						}}
+						ref={editFieldRef}
 					/>
 				</div>
 				<div>
@@ -49,12 +52,17 @@ const Todo = (props) => {
 				className='todo-text'
 				onClick={(e) => {
 					setEditing({ status: true, task: props.task });
-				}}>
+				}}
+				ref={editButtonRef}>
 				{props.task}
 			</span>
 		</div>
 	);
 
+	useEffect(() => {
+		console.log('Side Effect');
+	});
+	console.log('Side Effect1');
 	return (
 		<li id={props.id}>{isEditing.status ? editingTemplate : viewTemplate}</li>
 	);
