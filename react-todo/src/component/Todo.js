@@ -67,5 +67,4 @@ const Todo = (props) => {
 		<li id={props.id}>{isEditing.status ? editingTemplate : viewTemplate}</li>
 	);
 };
-
 export default Todo;
