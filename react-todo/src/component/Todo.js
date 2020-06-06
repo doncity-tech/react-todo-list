@@ -37,20 +37,20 @@ const Todo = (props) => {
 			<input
 				type='checkbox'
 				defaultChecked={props.completed}
-				onChange={(e) => {
+				onChange={() => {
 					props.toggleTaskCompleted(props.id);
 				}}
 			/>
 			<button
 				className='delBtn'
-				onClick={(e) => {
+				onClick={() => {
 					props.deleteTask(props.id);
 				}}>
 				X
 			</button>
 			<span
 				className='todo-text'
-				onClick={(e) => {
+				onClick={() => {
 					setEditing({ status: true, task: props.task });
 				}}
 				ref={editButtonRef}>
